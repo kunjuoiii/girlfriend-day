@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Girlfriend Day Kunju ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffe6f0 url('milkybar.jpg') no-repeat center center/cover;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      overflow: hidden;
+      background-image: url('milkybar.jpg'), url('dairymilk.jpg');
+      background-position: center center, bottom right;
+      background-repeat: no-repeat, no-repeat;
+      background-size: cover, 300px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+    }
+
+    .gift-box {
+      position: relative;
+      width: 160px;
+      height: 160px;
+      background: linear-gradient(135deg, #fbb1bd, #fcd5ce);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(255, 0, 76, 0.6);
+      animation: bounce 1.5s infinite;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s ease;
+      z-index: 2;
+    }
+
+    .gift-box:active {
+      transform: scale(1.05) rotate(5deg);
+      animation: crack 0.5s forwards;
+    }
+
+    .lid {
+      position: absolute;
+      width: 180px;
+      height: 30px;
+      top: -30px;
+      background: linear-gradient(45deg, #ffffff, #ff4d6d);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.5s ease;
+      z-index: 2;
+    }
+
+    .ribbon {
+      position: absolute;
+      width: 20px;
+      height: 160px;
+      background: white;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .gift-box.cracked {
+      animation: crack 0.5s forwards;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes crack {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.1) rotate(8deg); opacity: 0; }
+    }
+
+    .message {
+      display: none;
+      font-size: 1.8rem;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      padding: 20px;
+      border-radius: 20px;
+      margin-top: 30px;
+      animation: fadeIn 2s ease-in-out;
+      z-index: 2;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .hearts {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hearts span {
+      position: absolute;
+      display: block;
+      color: #ff4d6d;
+      animation: float 5s linear infinite;
+      font-size: 2rem;
+      opacity: 0.8;
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
+    }
+
+    .spinning-heart {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10rem;
+      color: #ff4d6d;
+      animation: spin 6s linear infinite;
+      z-index: 0;
+      opacity: 0.3;
+    }
+
+    @keyframes spin {
+      0% { transform: translateX(-50%) rotate(0deg); }
+      100% { transform: translateX(-50%) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="spinning-heart">❤️</div>
+    <div class="gift-box" onclick="revealMessage(this)">
+      <div class="lid"></div>
+      <div class="ribbon"></div>
+    </div>
+    <div class="message" id="message">
+      Happy Girlfriend Day to my most beautiful, gorgeous Kunju ❤️‍🔥 babeeee...<br />
+      LOVE YOU SO SO SO SO SO MUCH 💖💖💖
+    </div>
+  </div>
+
+  <div class="hearts" id="hearts"></div>
+
+  <audio id="bgMusic" src="https://www.youtube.com/shorts/-4yqnC_iVT0?si=0J1tOA1TqmHnrv8c" type="audio/mpeg"></audio>
+
+  <script>
+    function revealMessage(box) {
+      box.classList.add('cracked');
+      setTimeout(() => {
+        document.getElementById('message').style.display = 'block';
+        generateHearts();
+        const music = document.getElementById('bgMusic');
+        music.play().catch(() => {});
+      }, 500);
+    }
+
+    function generateHearts() {
+      const heartsContainer = document.getElementById('hearts');
+      for (let i = 0; i < 30; i++) {
+        const heart = document.createElement('span');
+        heart.innerHTML = '❤';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+        heartsContainer.appendChild(heart);
+      }
+    }
+  </script>
+</body>
+</html>
